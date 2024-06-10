@@ -2,7 +2,8 @@ import { Component, inject } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-// import { ChatService } from '../../services/chat.service';
+import { ChatService } from '../../supabase/chat.service';
+
 
 @Component({
   selector: 'app-chat',
@@ -13,7 +14,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class ChatComponent {
   private auth = inject(AuthService);
-  // private chat_Services = inject(ChatService);
+  private chat_Services = inject(ChatService);
   private router = inject(Router);
   private fb = inject(FormBuilder)
   chatForm!: FormGroup
@@ -33,10 +34,11 @@ export class ChatComponent {
 
   onSubmit() {
     const formValue = this.chatForm.value.chat_message;
-    // this.chat_Services.chatMessage(formValue).then((res) => {
-    //   console.log(res);
-    // }).catch((err) => {
-    //   alert(err.message);
-    // })
+    this.chat_Services.chatMessage(formValue).then((res) => {
+      console.log(res);
+      this.chatForm.reset();
+    }).catch((err) => {
+      alert(err.message);
+    })
   }
 }

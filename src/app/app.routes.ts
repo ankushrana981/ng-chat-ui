@@ -5,7 +5,6 @@ export const routes: Routes = [
 
           {
                     path:'chat',
-                    canActivate: [authGuard],
                     loadComponent: () => import('./pages/chat/chat.component').then(com => com.ChatComponent)
           },
           {

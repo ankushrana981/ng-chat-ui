@@ -26,4 +26,18 @@ export class ChatService {
       return
     }
    }
+
+   async listChat(){
+    try {
+      const { data, error} = await this.supaBase.from('chat').select('*,users(*)')
+      if(error){
+        console.log(error.message);
+      }
+
+      return data;
+    } catch (error) {
+      throw error
+    }
+
+   }
 }

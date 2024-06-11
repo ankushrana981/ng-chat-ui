@@ -26,3 +26,9 @@
 .border-top {
     border-top: 1px solid #dee2e6!important;
 }
+.button{
+    background: none;
+    border: none;
+    margin-left: 38px;
+    margin-top: -55px;
+}

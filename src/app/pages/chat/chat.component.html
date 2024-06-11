@@ -20,11 +20,23 @@
                 </div>
                 <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
                   <div class="font-weight-bold mb-1">{{msg.users.full_name}}</div>
+                  
                 {{msg.text}}
+                </div>
+                <div class="dropdown">
+                  <button (click)="onClickDropdown(msg)" class="button" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    ...
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</a></li>
+                  </ul>
                 </div>
               </div>
             </div>
+            
           </div>
+          <!-- Button trigger modal -->
+
         }
           <form [formGroup]="chatForm" (ngSubmit)="onSubmit()">
           <div class="flex-grow-0 py-3 px-4 border-top">
@@ -40,3 +52,5 @@
     </div>
   </div>
 </main>
+
+<app-delete-modal></app-delete-modal>
